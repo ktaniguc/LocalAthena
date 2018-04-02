@@ -1,3 +1,4 @@
+setupATLAS
 #asetup r2017-04-13T2135,AthenaP1,21.0
 #asetup r2017-04-16T2135,AthenaP1,21.0
 #asetup r2017-04-16T2130,Athena,21.0
