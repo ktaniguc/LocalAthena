@@ -1,5 +1,10 @@
 #! /bin/sh
 
+# pwd
+# >> hoge/source
+# ./compile.sh cmake
+# >> try compile with cmake
+
 if [ "$TestArea" = "" ] ; then 
   echo "TestArea is missing"
   exit 1
