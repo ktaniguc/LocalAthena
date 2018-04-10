@@ -40,6 +40,10 @@ Like...
 $ ./compile.sh cmake
 ```
 Then build directory is made.
+And once you comile, you must do
+```sh
+source $TestArea/../build/$CMTCONFIG/setup.sh
+```
 
 
 ### How to edit code
