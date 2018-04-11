@@ -51,5 +51,5 @@ source $TestArea/../build/$CMTCONFIG/setup.sh
 git fetch upstream
 git checkout -b my_branch_name upstream/[project-branch] --no-track
 ```
-[project-branch] is maeter, 21.0, 21.3 etc..
+[project-branch] is master, 21.0, 21.3 etc..
 
