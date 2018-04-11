@@ -1,4 +1,4 @@
-# my_atlas_athena
+# LocalAthena
 
 ## Usage
 ```cp
