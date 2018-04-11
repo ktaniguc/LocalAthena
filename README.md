@@ -3,6 +3,8 @@
 ## Usage
 ```cp
 $ git clone ~~~
+$ ls 
+>> run/ source/
 $ cd source
 $ source setup.sh
 $ ./checkout.sh your_branch_name
@@ -11,7 +13,7 @@ $ ./compile.sh cmake
 ```
 
 
-## discription of each script
+## Details of each script
 
 ### setup.sh
 If you want to use different asetup version, you must edit setup.sh.
