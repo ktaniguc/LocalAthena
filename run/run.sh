@@ -23,6 +23,7 @@ do
   DIR=`echo $FILE | sed -e "s:$BASE_DIR:DIR_:g"`
   mkdir $DIR && cd $DIR
   echo "Reco_tf.py '--inputRDOFile=${FILE}' '--maxEvents=${MAX_EVENT}'  '--outputAODFile=AOD.pool.root'" > tmp.sh && bsub -q 12h -o log.out < tmp.sh && rm tmp.sh
+  # # if you want "HITS to AOD", use "Reco_tf.py '--inputHITSFile=${FILE}' '--outputRDOFile=RDO_from_HITS.root' '--maxEvents=${MAX_EVENT}'  '--outputAODFile=AOD.pool.root'" > tmp.sh && bsub -q 12h -o log.out < tmp.sh && rm tmp.sh
   cd -
 done
 exit 0
