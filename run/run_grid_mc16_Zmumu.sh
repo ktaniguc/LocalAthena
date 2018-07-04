@@ -4,9 +4,14 @@ DATE=$(date '+%Y%m%d%H%M')
 source $TestArea/../build/$CMTCONFIG/setup.sh
 
 INPUT_RDO="user.yfukuhar.mc16_13TeV.361107.PowhegPythia8EvtGen_AZNLOCTEQ6L1_Zmumu.recon.RDO.e3601_s3126_r9781.201806291853_EXT0"
-OUTPUT_AOD=$INPUT_RDO"."$DATE".AOD.pool.root"
+INPUT_RDO_FOR_OUTPUT="user.yfukuhar.mc16_13TeV.361107.PowhegPythia8EvtGen_AZNLOCTEQ6L1_Zmumu.recon.RDO.e3601_s3126_r9781"
+OUTPUT_AOD=$INPUT_RDO_FOR_OUTPUT".AOD."$DATE""
 CMT_CONFIG="x86_64-slc6-gcc62-opt"
 AMI_TAG="r9781"
+NFILES_PER_JOB='5'
+NEVENTS_PER_FILE='500'
+NEVENTS_PER_JOB='100'
+DESTSE='TOKYO-LCG2_SCRATCHDISK'
 
 echo ""
 echo "INPUT_RDO =    "$INPUT_RDO
@@ -20,7 +25,18 @@ mkdir $SUBMIT_AREA
 cd $SUBMIT_AREA
 cp ../*.sh ./
 
-echo "pathena --trf "Reco_tf.py --AMIConfig r9311 --maxEvents %MAXEVENTS --skipEvents %SKIPEVENTS --outputAODFile $OUTPUT_AOD --inputRDOFile $INPUT_RDO"  --cmtConfig ${CMTCONFIG} --nFilesPerJob 1 ---nEventsPerFile 1000 --nEventsPerJob 100"
+echo "COMMAND: pathena --trf \"Reco_tf.py --maxEvents %MAXEVENTS --outputAODFile %OUT.AOD.pool.root --inputRDOFile %IN\" --inDS ${INPUT_RDO} --outDS ${OUTPUT_AOD} --cmtConfig ${CMTCONFIG} --nFilesPerJob 5 --nEventsPerFile 500 --nEventsPerJob 100 --destSE TOKYO-LCG2_SCRATCHDISK" 2>&1 | tee jediTaskID.info
 
-pathena --trf "Reco_tf.py --AMIConfig $AMI_TAG --maxEvents %MAXEVENTS --skipEvents %SKIPEVENTS --outputAODFile $OUTPUT_AOD --inputRDOFile $INPUT_RDO" --cmtConfig $CMTCONFIG --nFilesPerJob 5 ---nEventsPerFile 1000 --nEventsPerJob 100
+echo "" | tee -a jediTaskID.info
+echo "LOG: " | tee -a jediTaskID.info
 
+pathena --trf "Reco_tf.py --maxEvents %MAXEVENTS --outputAODFile %OUT.AOD.pool.root --inputRDOFile %IN" --inDS ${INPUT_RDO} --outDS ${OUTPUT_AOD} --cmtConfig ${CMTCONFIG} --nFilesPerJob 5 --nEventsPerFile 2000 --nEventsPerJob 100 --destSE TOKYO-LCG2_SCRATCHDISK 2>&1 | tee -a jediTaskID.info
+
+JEDITASKID=$(sed -n '/new jediTaskID=/s/INFO : succeeded. new jediTaskID=//p' jediTaskID.info)
+#sed -n '/new jediTaskID/p' tmp_test.txt
+echo "JEDITASKID: ${JEDITASKID}" 2>&1 | tee -a jediTaskID.info
+echo "JEDI TASK URL: https://bigpanda.cern.ch/task/${JEDITASKID}/" 2>&1 | tee -a jediTaskID.info
+
+cat jediTaskID.info
+
+cd -
