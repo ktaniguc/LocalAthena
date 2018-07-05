@@ -33,9 +33,8 @@ echo "pathena --trf \"Reco_tf.py --maxEvents %MAXEVENTS --outputAODFile %OUT.AOD
 
 echo "" | tee -a jediTaskID.info
 echo "LOG: " | tee -a jediTaskID.info
-echo ""
 
-pathena --trf "Reco_tf.py --maxEvents %MAXEVENTS --outputAODFile %OUT.AOD.pool.root --inputRDOFile %IN" --inDS ${INPUT_RDO} --outDS ${OUTPUT_AOD} --cmtConfig ${CMTCONFIG} --destSE TOKYO-LCG2_SCRATCHDISK 2>&1 | tee -a jediTaskID.info
+pathena --trf "Reco_tf.py --maxEvents %MAXEVENTS --outputAODFile %OUT.AOD.pool.root --inputRDOFile %IN" --inDS ${INPUT_RDO} --outDS ${OUTPUT_AOD} --cmtConfig ${CMTCONFIG} --nFilesPerJob 5 --nEventsPerFile 500 --nEventsPerJob 500 --site "ANALY_CERN_SLC6,ANALY_BNL_LONG" --destSE TOKYO-LCG2_SCRATCHDISK 2>&1 | tee -a jediTaskID.info
 
 JEDITASKID=$(sed -n '/new jediTaskID=/s/INFO : succeeded. new jediTaskID=//p' jediTaskID.info)
 #sed -n '/new jediTaskID/p' tmp_test.txt
