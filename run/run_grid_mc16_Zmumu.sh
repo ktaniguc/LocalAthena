@@ -20,7 +20,7 @@ echo ""
 
 #LOG_NAME="log_"$LOG_INDEX"_"$DATE
 
-SUBMIT_AREA="SubmitArea_"$DATE
+SUBMIT_AREA="Grid_SubmitArea_"$DATE
 mkdir $SUBMIT_AREA
 cd $SUBMIT_AREA
 cp ../*.sh ./
@@ -28,7 +28,7 @@ cp ../*.sh ./
 echo ${0} 2>&1 | tee -a jediTaskID.info
 echo ""
 
-COMMAND="pathena --trf \"Reco_tf.py --outputAODFile %OUT.AOD.pool.root --inputRDOFile %IN\" --inDS ${INPUT_RDO} --outDS ${OUTPUT_AOD} --cmtConfig ${CMTCONFIG} --nFilesPerJob 5 --nEventsPerFile 500 --nEventsPerJob 500 --destSE TOKYO-LCG2_SCRATCHDISK"
+COMMAND="pathena --trf \"Reco_tf.py --maxEvents %MAXEVENTS --skipEvents %SKIPEVENTS --outputAODFile %OUT.AOD.pool.root --inputRDOFile %IN\" --inDS ${INPUT_RDO} --outDS ${OUTPUT_AOD} --cmtConfig ${CMTCONFIG} --nFilesPerJob 1 --nEventsPerFile 1000 --nEventsPerJob 100 --destSE TOKYO-LCG2_SCRATCHDISK"
 
 echo "COMMAND:"
 echo $COMMAND
