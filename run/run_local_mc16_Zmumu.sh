@@ -34,9 +34,10 @@ if [ -f "$INPUT_LIST" ] ; then
     echo ""
     echo "INPUT_FILE =   "$INPUT_FILE
     echo ""
-    TEMP_DIR=`echo "$FILE" | sed -e "s:/:_:g"`
+    TEMP_DIR=`echo "$INPUT_FILE" | sed -e "s:/:_:g"`
     DIR="Output/$TEMP_DIR"
     mkdir -p $DIR
+    echo "Submit Directory: "$DIR
     cp ./*.sh $DIR
     cd $DIR
     COMMAND="bsub -q 2d -o log.out 'source $TestArea/../build/$CMTCONFIG/setup.sh && Reco_tf.py --outputAODFile ${OUTPUT_AOD} --inputRDOFile ${INPUT_FILE}'"

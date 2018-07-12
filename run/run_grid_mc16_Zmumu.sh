@@ -28,7 +28,7 @@ cp ../*.sh ./
 echo ${0} 2>&1 | tee -a jediTaskID.info
 echo ""
 
-COMMAND="pathena --trf \"Reco_tf.py --maxEvents %MAXEVENTS --skipEvents %SKIPEVENTS --outputAODFile %OUT.AOD.pool.root --inputRDOFile %IN\" --inDS ${INPUT_RDO} --outDS ${OUTPUT_AOD} --cmtConfig ${CMTCONFIG} --nFilesPerJob 1 --nEventsPerFile 1000 --nEventsPerJob 100 --destSE TOKYO-LCG2_SCRATCHDISK"
+COMMAND="pathena --trf \"Reco_tf.py --outputAODFile %OUT.AOD.pool.root --inputRDOFile %IN\" --nFilesPerJob=5 --inDS ${INPUT_RDO} --outDS ${OUTPUT_AOD} --cmtConfig ${CMTCONFIG}"
 
 echo "COMMAND:"
 echo $COMMAND
