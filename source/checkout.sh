@@ -8,9 +8,11 @@ git atlas init-workdir ssh://git@gitlab.cern.ch:7999/yfukuhar/athena.git
 #git clone ssh://git@gitlab.cern.ch:7999/yyazawa/athena.git
 cd athena
 git atlas addpkg TrigL2MuonSA
+git atlas addpkg TrigmuComb
+git atlas addpkg TrigMuonEF
 git fetch upstream
 #git checkout TrigL2MuonSA-00-03-63-master-fixRpcPadMsg1
-git checkout -b $BRANCH_NAME upstream/21.3 --no-track
+git checkout -b $BRANCH_NAME upstream/21.0 --no-track
 #svnpull.py TrigL2MuonSA-00-03-63
 cd -
 
