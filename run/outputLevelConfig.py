@@ -9,17 +9,18 @@ AllDebug = True
 #AllDebug = False
 
 #SpecificDebug = True
-SpecificOutput = False
+SpecificDebug = False
 
 
 ### import ###
-from TrigL2MuonSA.TrigL2MuonSAConf import import *
-from TrigL2MuonSA.TrigL2MuonSAConfig import import TrigL2MuonSAConfig
-from TrigmuComb.TrigmuCombConf import import *
-from TrigMuonHypo.TrigMuonHypoConfig import import *
-from TrigMuonHypo.TrigL2MuonOverlapRemoverConfig import import *
-from AthenaCommon.AppMgr import import ServiceMgr
-from AthenaCommon.AppMgr import import ToolSvc
+from TrigL2MuonSA.TrigL2MuonSAConf import *
+from TrigL2MuonSA.TrigL2MuonSAConfig import TrigL2MuonSAConfig
+from TrigmuComb.TrigmuCombConf import *
+from TrigmuComb.TrigmuCombConfig import TrigmuCombConfig
+from TrigMuonHypo.TrigMuonHypoConfig import *
+from TrigMuonHypo.TrigL2MuonOverlapRemoverConfig import *
+from AthenaCommon.AppMgr import ServiceMgr
+from AthenaCommon.AppMgr import ToolSvc
 
 if not isGrid:
     ServiceMgr.MessageSvc.OutputLevel = INFO
@@ -212,7 +213,10 @@ if SpecificDebug: tgc_roaddefiner.OutputLevel = INFO
 
 ### TrigmuComb ###
 #muComb
-muComb = TrigmuComb__muComb()
+if AllDebug: TrigmuCombConfig.OutputLevel = DEBUG
+if SpecificDebug: TrigmuCombConfig.OutputLevel = INFO
+
+#muComb = TrigmuComb__muComb()
 if AllDebug: muComb.OutputLevel = DEBUG
 if SpecificDebug: muComb.OutputLevel = INFO
 #ToolSvc += muComb

@@ -4,7 +4,7 @@ DATE=$(date '+%Y%m%d%H%M')
 source $TestArea/../build/$CMTCONFIG/setup.sh
 
 #INPUT_RDO="/gpfs/fs2001/yfukuhar/data/user.yfukuhar.mc16_13TeV.361107.PowhegPythia8EvtGen_AZNLOCTEQ6L1_Zmumu.recon.RDO.e3601_s3126_r9781.201806291853_EXT0/user.yfukuhar.14514992.EXT0._000004.RDO.pool.root"
-INPUT_LIST="tmp_Zmumu.list"
+INPUT_LIST="shortZmumuRDO_FTK.list"
 INPUT_RDO_FOR_OUTPUT="user.yfukuhar.mc16_13TeV.Zmumu"
 OUTPUT_AOD=$INPUT_RDO_FOR_OUTPUT".AOD."$DATE".root"
 #CMT_CONFIG="x86_64-slc6-gcc62-opt"
@@ -13,6 +13,7 @@ OUTPUT_AOD=$INPUT_RDO_FOR_OUTPUT".AOD."$DATE".root"
 #NEVENTS_PER_FILE='500'
 #NEVENTS_PER_JOB='100'
 #DESTSE='TOKYO-LCG2_SCRATCHDISK'
+MAXEVENTS='100'
 
 echo ""
 echo "INPUT_LIST =   "$INPUT_LIST
@@ -40,7 +41,7 @@ if [ -f "$INPUT_LIST" ] ; then
     echo "Submit Directory: "$DIR
     cp ./*.sh $DIR
     cd $DIR
-    COMMAND="bsub -q 2d -o log.out 'source $TestArea/../build/$CMTCONFIG/setup.sh && Reco_tf.py --outputAODFile ${OUTPUT_AOD} --inputRDOFile ${INPUT_FILE}'"
+    COMMAND="bsub -q 2d -o log.out 'source $TestArea/../build/$CMTCONFIG/setup.sh && Reco_tf.py --maxEvents ${MAXEVENTS} --outputAODFile ${OUTPUT_AOD} --inputRDOFile ${INPUT_FILE}' --postInclude ./outputLevelConfig.py"
     echo $COMMAND > tmp_athena_run.sh
     sh tmp_athena_run.sh
     cd -
