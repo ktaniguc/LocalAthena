@@ -1,7 +1,27 @@
-# This script is based on Yohei Noguchi's one.
 
-### specific config ###
+### triger flags config ###
+#from RecExConfig.RecFlags import rec
+#rec.doWriteAOD=True
+#rec.doAOD=True
+#rec.doFTK=True
+#
+#TriggerFlags.doFTK=True
+#
+#TriggerFlags.readHLTconfigFromXML=False
+#TriggerFlags.readLVL1configFromXML=False
+#TriggerFlags.triggerMenuSetup="MC_pp_v7" 
+from RecExConfig.RecFlags import rec
+from AthenaCommon.AthenaCommonFlags import athenaCommonFlags as acf
+from InDetRecExample.InDetJobProperties import InDetFlags
+from TriggerJobOpts.TriggerFlags import TriggerFlags
+from JetRec.JetRecFlags import jetFlags,JetContentDetail
 
+InDetFlags.doSlimming.set_Value_and_Lock(False)
+TriggerFlags.AODEDMSet.set_Value_and_Lock("AODFULL");
+jetFlags.detailLevel=JetContentDetail.Full
+rec.doFTK.set_Value_and_Lock(True)
+
+### run config ###
 isGrid = False
 #isGrid = True
 
