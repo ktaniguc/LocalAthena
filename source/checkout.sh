@@ -12,7 +12,7 @@ git atlas addpkg TrigmuComb
 git atlas addpkg TrigMuonEF
 git fetch upstream
 #git checkout TrigL2MuonSA-00-03-63-master-fixRpcPadMsg1
-git checkout -b $BRANCH_NAME upstream/21.0 --no-track
+git checkout -b $BRANCH_NAME upstream/21.0-TrigMC --no-track
 #svnpull.py TrigL2MuonSA-00-03-63
 cd -
 
