@@ -242,6 +242,11 @@ if AllDebug: muComb.OutputLevel = DEBUG
 if SpecificDebug: muComb.OutputLevel = INFO
 #ToolSvc += muComb
 
+from TrkExTools.AtlasExtrapolator import AtlasExtrapolator
+ToolSvc += AtlasExtrapolator()
+ToolSvc.AtlasExtrapolator.OutputLevel = VERBOSE
+
+
 
 print "Setup my configuration..."
 
