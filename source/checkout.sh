@@ -4,7 +4,8 @@ if [ "$BRANCH_NAME" = "" ] ; then
 fi
 echo "Branch name is $BRANCH_NAME"
 
-git atlas init-workdir ssh://git@gitlab.cern.ch:7999/yoyamagu/athena.git
+#git atlas init-workdir ssh://git@gitlab.cern.ch:7999/yoyamagu/athena.git
+git atlas init-workdir ssh://git@gitlab.cern.ch:7999/yfukuhar/athena.git
 #git clone ssh://git@gitlab.cern.ch:7999/yyazawa/athena.git
 cd athena
 git atlas addpkg TrigL2MuonSA
@@ -13,7 +14,7 @@ git atlas addpkg TrigMuonEF
 git atlas addpkg TriggerMenu
 git fetch upstream
 #git checkout TrigL2MuonSA-00-03-63-master-fixRpcPadMsg1
-git checkout -b $BRANCH_NAME origin/21.5.6_InOutL2Muon --no-track
+#git checkout -b $BRANCH_NAME origin/21.5.6_InOutL2Muon --no-track
 
 #svnpull.py TrigL2MuonSA-00-03-63
 cd -
