@@ -9,8 +9,9 @@ DATE=$(date '+%Y%m%d%H%M')
 #INPUT_LIST="../shortZmumuRDO_FTK.list"
 #INPUT_LIST="../Jpsi_424130.list"
 #INPUT_LIST="../Jpsi_424103.list"
-#INPUT_LIST="../Jpsi_424108.list"
-INPUT_LIST="../FTK_361107.list"
+INPUT_LIST="../Jpsi_424108.list"
+#INPUT_LIST="../Jpsi_424100.list"
+#INPUT_LIST="../FTK_361107.list"
 #INPUT_RDO_FOR_OUTPUT="user.yfukuhar.mc16_13TeV.Zmumu"
 #OUTPUT_AOD=$INPUT_RDO_FOR_OUTPUT".AOD."$DATE".root"
 TEMP_RUN_SCRIPT="bsub_run_temp.sh"
@@ -48,7 +49,7 @@ if [ -f "$INPUT_LIST" ] ; then
     cd $DIR
     sed -i -e "10i  \ \ --inputRDO_FTKFile $INPUT_FILE \ \\\\" $TEMP_RUN_SCRIPT
     echo "=========================="
-    bsub -q 1d -o log_out ./bsub_run_temp.sh
+    bsub -n 3 -q 1d -o log_out ./bsub_run_temp.sh
     echo "=========================="
     echo ""
 
@@ -59,7 +60,7 @@ if [ -f "$INPUT_LIST" ] ; then
     cd -
     echo ""
     echo ""
-    sleep 2
+    #sleep 1
     COUNT=`expr $COUNT + 1`
   done
 fi
