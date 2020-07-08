@@ -20,10 +20,10 @@ setupATLAS
 #asetup Athena,21.0.53,here
 #asetup Athena,21.5.6,here
 #asetup r2019-07-09T2150,Athena,21.3,here
-asetup AthenaP1,21.1.50,here
+#asetup AthenaP1,21.1.50,here
 #asetup Athena,21.3.14,here
 #asetup AtlasOffline,21.0.15,here
-#asetup 21.0,Athena,r26
+asetup Athena,21.3.21,here
 #asetup 21.0,Athena,r31
 #asetup AtlasOffline,21.0.20,slc6,gcc62,64
 
