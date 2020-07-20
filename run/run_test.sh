@@ -12,11 +12,11 @@ if [ -f $INPUT_LIST ] ; then
   do
     echo "INPUT_FILE = "$INPUT_FILE
     TMP_DIR=`echo "$INPUT_FILE" | sed -e "s:/:_:g"`
-    SUB_TAR="/gpfs/fs7001/ktaniguc/outputfile/L2SA4Close-By_newAlg/$DATE/$TMP_DIR/processing"
+    SUB_TAR="/gpfs/fs7001/ktaniguc/outputfile/test_L2SA4Close-By_newAlg/$DATE/$TMP_DIR/processing"
     mkdir -p $SUB_TAR
     cp ./*.sh $SUB_TAR
     cd $SUB_TAR
-    bsub -q ${bque} -o log.out "./bsub.sh ${INPUT_FILE}"
+    bsub -q ${bque} -o log.out "./HITS2AOD_test.sh ${INPUT_FILE}"
     cd -
   done
 fi

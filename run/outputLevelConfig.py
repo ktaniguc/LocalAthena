@@ -193,13 +193,26 @@ if AllDebug: rpc_prep.OutputLevel = DEBUG
 if SpecificDebug: rpc_prep.OutputLevel = INFO
 ToolSvc += rpc_prep
 
+#RpcClusterPreparator
+rpcclus_prep =TrigL2MuonSA__RpcClusterPreparator()
+if AllDebug: rpcclus_prep.OutputLevel = DEBUG
+if SpecificDebug: rpcclus_prep.OutputLevel = INFO
+ToolSvc += rpcclus_prep
 
+rpcclus_pat =TrigL2MuonSA__ClusterPatFinder()
+if AllDebug: rpcclus_pat.OutputLevel = DEBUG
+if SpecificDebug: rpcclus_pat.OutputLevel = INFO
+ToolSvc += rpcclus_pat
+
+rpcclus_road =TrigL2MuonSA__ClusterRoadDefiner()
+if AllDebug: rpcclus_road.OutputLevel = DEBUG
+if SpecificDebug: rpcclus_road.OutputLevel = INFO
+ToolSvc += rpcclus_road
 
 rpc_patfinder = TrigL2MuonSA__RpcPatFinder()
 if AllDebug: rpc_patfinder.OutputLevel = DEBUG
 if SpecificDebug: rpc_patfinder.OutputLevel = INFO
 ToolSvc += rpc_patfinder
-
 
 
 rpc_roaddefiner = TrigL2MuonSA__RpcRoadDefiner()
